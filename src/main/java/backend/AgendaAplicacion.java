@@ -1,6 +1,6 @@
 package backend;
 
-import frontend.Login;
+import frontend.*;
 
 public class AgendaAplicacion {
 
@@ -8,6 +8,9 @@ public class AgendaAplicacion {
         Login screen = new Login();
         screen.setVisible(true);
         screen.setLocationRelativeTo(null);
+        //App test = new App();
+        //test.setVisible(true);
+        //test.setLocationRelativeTo(null);
         
     }
 }
