@@ -35,7 +35,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         register = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        backgroundimg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -120,8 +120,8 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 222, 30, 20));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bglog.jpg"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 350));
+        backgroundimg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bglog.jpg"))); // NOI18N
+        jPanel1.add(backgroundimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 360));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 350));
 
@@ -167,10 +167,10 @@ public class Login extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backgroundimg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton login;
     private javax.swing.JPasswordField password;
