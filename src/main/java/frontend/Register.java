@@ -5,8 +5,8 @@ package frontend;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -163,19 +163,41 @@ public class Register extends javax.swing.JFrame {
             {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/usersdb", "root", "12345678");
-                String insertQuery = "INSERT INTO usuarios (users, password) VALUES (?, ?)";
-                PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-                preparedStatement.setString(1, User);
-                preparedStatement.setString(2, Password);
-                preparedStatement.executeUpdate();
+                    // Verificar si el usuario ya existe
+                String checkUserQuery = "SELECT COUNT(*) FROM usuarios WHERE users = ?";
+                PreparedStatement checkUserStatement = connection.prepareStatement(checkUserQuery);
+                checkUserStatement.setString(1, User);
+                ResultSet userExistsResult = checkUserStatement.executeQuery();
+                userExistsResult.next();
+                int userCount = userExistsResult.getInt(1);
+                if (Password.length()>7){
+                if (userCount>0)
+                {
+                    JOptionPane.showMessageDialog(null, "El usuario ya se encuentra registrado");
+                } else
+                {
+                    String insertQuery = "INSERT INTO usuarios (users, password) VALUES (?, ?)";
+                    PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+               
+                    preparedStatement.setString(1, User);
+                    preparedStatement.setString(2, Password);
+                    preparedStatement.executeUpdate();
                 
-                preparedStatement.close();
-                connection.close();
-                JOptionPane.showMessageDialog(null, "Registrado correctamente");
+                    preparedStatement.close();
+        
+                    JOptionPane.showMessageDialog(null, "Registrado correctamente");
+                }
+                } else
+                {
+                    JOptionPane.showMessageDialog(null, "La contraseña debe tener al menos 8 caracteres");
+                }
+                //cerramos conexion
+                checkUserStatement.close();
+                 connection.close();
+
                 
             } catch(SQLException e)
                     {
-                        e.printStackTrace();
                     } catch (ClassNotFoundException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
