@@ -26,34 +26,174 @@ public class App extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        logout = new javax.swing.JButton();
+        crear = new javax.swing.JButton();
+        eventos = new javax.swing.JButton();
+        edit = new javax.swing.JButton();
+        bgapp_1 = new javax.swing.JLabel();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jLabel1.setText("PRUEBA");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        logout.setBackground(new java.awt.Color(51, 51, 51));
+        logout.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
+        logout.setForeground(new java.awt.Color(255, 255, 255));
+        logout.setText("CERRAR SESION");
+        logout.setBorder(null);
+        logout.setBorderPainted(false);
+        logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logout.setFocusPainted(false);
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                logoutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                logoutMouseExited(evt);
+            }
+        });
+        jPanel1.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 140, 30));
+
+        crear.setBackground(new java.awt.Color(51, 51, 51));
+        crear.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
+        crear.setForeground(new java.awt.Color(255, 255, 255));
+        crear.setText("CREAR EVENTO");
+        crear.setBorder(null);
+        crear.setBorderPainted(false);
+        crear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        crear.setFocusPainted(false);
+        crear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                crearMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                crearMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                crearMouseExited(evt);
+            }
+        });
+        jPanel1.add(crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 360, 100));
+
+        eventos.setBackground(new java.awt.Color(51, 51, 51));
+        eventos.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
+        eventos.setForeground(new java.awt.Color(255, 255, 255));
+        eventos.setText("VER EVENTOS");
+        eventos.setBorder(null);
+        eventos.setBorderPainted(false);
+        eventos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        eventos.setFocusPainted(false);
+        eventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                eventosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                eventosMouseExited(evt);
+            }
+        });
+        jPanel1.add(eventos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 360, 100));
+
+        edit.setBackground(new java.awt.Color(51, 51, 51));
+        edit.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
+        edit.setForeground(new java.awt.Color(255, 255, 255));
+        edit.setText("EDITAR O ELIMINAR EVENTOS");
+        edit.setBorder(null);
+        edit.setBorderPainted(false);
+        edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        edit.setFocusPainted(false);
+        edit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                editMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                editMouseExited(evt);
+            }
+        });
+        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 360, 100));
+
+        bgapp_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bgapp1.jpg"))); // NOI18N
+        jPanel1.add(bgapp_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(314, 314, 314)
-                .addComponent(jLabel1)
-                .addContainerGap(337, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jLabel1)
-                .addContainerGap(194, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        Login lg = new Login();
+        this.dispose();
+        lg.setVisible(true);
+        lg.setLocationRelativeTo(null);
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        logout.setBackground(new java.awt.Color(138, 136, 136));
+    }//GEN-LAST:event_logoutMouseEntered
+
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        logout.setBackground(new java.awt.Color(51,51,51));
+    }//GEN-LAST:event_logoutMouseExited
+
+    private void crearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseEntered
+         crear.setBackground(new java.awt.Color(138, 136, 136));
+    }//GEN-LAST:event_crearMouseEntered
+
+    private void crearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseExited
+        crear.setBackground(new java.awt.Color(51,51,51));
+    }//GEN-LAST:event_crearMouseExited
+
+    private void eventosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventosMouseEntered
+         eventos.setBackground(new java.awt.Color(138, 136, 136));
+    }//GEN-LAST:event_eventosMouseEntered
+
+    private void eventosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventosMouseExited
+        eventos.setBackground(new java.awt.Color(51,51,51));
+    }//GEN-LAST:event_eventosMouseExited
+
+    private void editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseEntered
+        edit.setBackground(new java.awt.Color(138, 136, 136));
+    }//GEN-LAST:event_editMouseEntered
+
+    private void editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseExited
+        edit.setBackground(new java.awt.Color(51,51,51));
+    }//GEN-LAST:event_editMouseExited
+
+    private void crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseClicked
+        this.dispose();
+        App_create cr = new App_create();
+        cr.setVisible(true);
+        cr.setLocationRelativeTo(null);
+    }//GEN-LAST:event_crearMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel bgapp_1;
+    private javax.swing.JButton crear;
+    private javax.swing.JButton edit;
+    private javax.swing.JButton eventos;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton logout;
     // End of variables declaration//GEN-END:variables
 }

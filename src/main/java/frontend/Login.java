@@ -40,9 +40,14 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        pw.setBackground(new java.awt.Color(69, 73, 73));
+        pw.setForeground(new java.awt.Color(255, 255, 255));
         pw.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         pw.setToolTipText("");
+        pw.setCaretColor(new java.awt.Color(255, 255, 255));
+        pw.setDisabledTextColor(new java.awt.Color(51, 51, 51));
         pw.setName(""); // NOI18N
+        pw.setSelectionColor(new java.awt.Color(102, 102, 102));
         pw.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwActionPerformed(evt);
@@ -50,6 +55,11 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(pw, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 189, 158, -1));
 
+        user.setBackground(new java.awt.Color(69, 73, 73));
+        user.setForeground(new java.awt.Color(255, 255, 255));
+        user.setCaretColor(new java.awt.Color(255, 255, 255));
+        user.setDisabledTextColor(new java.awt.Color(51, 51, 51));
+        user.setSelectionColor(new java.awt.Color(102, 102, 102));
         user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userActionPerformed(evt);
@@ -71,6 +81,7 @@ public class Login extends javax.swing.JFrame {
         login.setBorder(null);
         login.setBorderPainted(false);
         login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        login.setFocusPainted(false);
         login.setMinimumSize(new java.awt.Dimension(50, 16));
         login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

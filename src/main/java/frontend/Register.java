@@ -42,6 +42,10 @@ public class Register extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(554, 350));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        userrg.setBackground(new java.awt.Color(69, 73, 73));
+        userrg.setForeground(new java.awt.Color(255, 255, 255));
+        userrg.setCaretColor(new java.awt.Color(255, 255, 255));
+        userrg.setSelectionColor(new java.awt.Color(102, 102, 102));
         userrg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userrgActionPerformed(evt);
@@ -53,6 +57,11 @@ public class Register extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Indica nombre de usuario");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
+
+        pwrg.setBackground(new java.awt.Color(69, 73, 73));
+        pwrg.setForeground(new java.awt.Color(255, 255, 255));
+        pwrg.setCaretColor(new java.awt.Color(255, 255, 255));
+        pwrg.setSelectionColor(new java.awt.Color(102, 102, 102));
         jPanel1.add(pwrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 158, -1));
 
         jLabel2.setFont(new java.awt.Font("Impact", 0, 14)); // NOI18N
@@ -64,9 +73,11 @@ public class Register extends javax.swing.JFrame {
         registrar.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
         registrar.setForeground(new java.awt.Color(255, 255, 255));
         registrar.setText("Registrar");
+        registrar.setAutoscrolls(true);
         registrar.setBorder(null);
         registrar.setBorderPainted(false);
         registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registrar.setFocusPainted(false);
         registrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 registrarMouseClicked(evt);
