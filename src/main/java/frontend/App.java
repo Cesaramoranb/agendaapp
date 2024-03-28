@@ -4,6 +4,10 @@
  */
 package frontend;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author xcamb
@@ -95,6 +99,9 @@ public class App extends javax.swing.JFrame {
         eventos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eventos.setFocusPainted(false);
         eventos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eventosMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 eventosMouseEntered(evt);
             }
@@ -181,11 +188,33 @@ public class App extends javax.swing.JFrame {
     private void crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseClicked
         this.dispose();
         App_create cr = new App_create();
+        cr.setNombre(nombre);
         cr.setVisible(true);
         cr.setLocationRelativeTo(null);
     }//GEN-LAST:event_crearMouseClicked
 
+    private void eventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventosMouseClicked
+        this.dispose();
+        App_view vw;
+     
+            vw = new App_view(nombre);
 
+             vw.setVisible(true);
+             vw.setLocationRelativeTo(null);
+             
+
+
+        
+    }//GEN-LAST:event_eventosMouseClicked
+
+    
+       public void setNombre(String valor)
+       {
+           nombre = valor;
+       }
+       
+
+    public String nombre;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bgapp_1;
     private javax.swing.JButton crear;

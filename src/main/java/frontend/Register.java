@@ -103,6 +103,7 @@ public class Register extends javax.swing.JFrame {
         volver.setBorder(null);
         volver.setBorderPainted(false);
         volver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volver.setFocusPainted(false);
         volver.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 volverMouseEntered(evt);

@@ -12,12 +12,9 @@ import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
-    
     public Login() {
         initComponents();
-        
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -138,6 +135,7 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void pwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwActionPerformed
@@ -149,6 +147,11 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_registerMouseClicked
+   
+    public String getUser()
+    { 
+        return user.getText();
+    }
 
     private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
         // TODO add your handling code here:
@@ -176,6 +179,8 @@ public class Login extends javax.swing.JFrame {
     //LOGEAR
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
             String User = user.getText();
+            String valorDelCampo = getUser();
+            
             char[] Passwordchar = pw.getPassword();
             String Password = new String(Passwordchar);
 
@@ -192,6 +197,7 @@ public class Login extends javax.swing.JFrame {
             if (resultSet.next())
             {
                 App app = new App();
+                app.setNombre(valorDelCampo);
                 app.setVisible(true);
                 app.setLocationRelativeTo(null);
                 this.dispose();
@@ -210,8 +216,6 @@ public class Login extends javax.swing.JFrame {
                         
     }//GEN-LAST:event_loginMouseClicked
 
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundimg;
     private javax.swing.JLabel jLabel1;
@@ -221,7 +225,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton login;
     private javax.swing.JPasswordField pw;
     private javax.swing.JLabel register;
-    private javax.swing.JTextField user;
+    public javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 
 

@@ -7,7 +7,9 @@ package frontend;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -16,19 +18,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author xcamb
  */
 public class App_create extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form App_create
      */
+
     public App_create() {
-        initComponents();
         
+        initComponents();
+              
     }   
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -195,7 +202,9 @@ public class App_create extends javax.swing.JFrame {
     private void createEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createEventMouseClicked
         String titulo = title.getText();
         String descripcion = description.getText();
-        String categoria = (String) category.getSelectedItem(); 
+        String categoria = (String) category.getSelectedItem();
+
+
         try
         {
                 int year = dateini.getCalendar().get(Calendar.YEAR);
@@ -206,33 +215,49 @@ public class App_create extends javax.swing.JFrame {
                 int day2 = dateend.getCalendar().get(Calendar.DAY_OF_MONTH);    
                 String fechaStr2 =year2+"-"+month2+"-"+day2;
                 String fechaStr =year+"-"+month+"-"+day;
-                
+               
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-M-d");              
-                System.out.println(fechaStr);
-                System.out.println(fechaStr2);
                 
                 LocalDate fecha = LocalDate.parse(fechaStr, formatter);                
                 LocalDate fecha2 = LocalDate.parse(fechaStr2, formatter);      
                 
-                System.out.println(fecha);
-                System.out.println(fecha2);
+                if (fecha.isAfter(fecha2))
+                {
+                    JOptionPane.showMessageDialog(null, "LA FECHA INICIAL NO PUEDE SER MAYOR QUE LA FINAL, INTRODUZCA NUEVAMENTE.");
+                }else
+                {
                 
                 java.sql.Date fechainisql = java.sql.Date.valueOf(fecha);
                 java.sql.Date fechafinsql = java.sql.Date.valueOf(fecha2);
                 
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/usersdb", "root", "12345678");       
-                String insertQuery = "INSERT INTO eventos (nombre_evento, descripcion_evento, categoria_evento, fechainicio,  fechafin) VALUES (?, ?, ?, ?, ?)";                
+                String insertQuery = "INSERT INTO eventos (nombre_evento, descripcion_evento, categoria_evento, fechainicio,  fechafin, id_usuario) VALUES (?, ?, ?, ?, ?, ?)";                
+                String selectQuery = "SELECT id FROM usuarios WHERE users = " + "'" + getNombre() + "'";
+                
                 PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+                
+                Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(selectQuery);
+
+                
                 preparedStatement.setString(1, titulo);
                 preparedStatement.setString(2, descripcion);
                 preparedStatement.setString(3, categoria);
                 preparedStatement.setDate(4, fechainisql);
                 preparedStatement.setDate(5, fechafinsql);
+                if (resultSet.next())
+               {
+                  int id = resultSet.getInt("id");
+              
+                  preparedStatement.setInt(6, id);
+               } 
+                
                 preparedStatement.executeUpdate();
+                
                JOptionPane.showMessageDialog(null, "Evento creado con exito");
                 connection.close();
-        
+                }
         } catch(SQLException e){
              System.err.println("SQL error: " + e.getMessage()); // Print SQL errors
         } catch(ClassNotFoundException ex){
@@ -241,11 +266,21 @@ public class App_create extends javax.swing.JFrame {
         } catch (DateTimeParseException e) {
     // Handle parsing exception if the format doesn't match
     System.err.println("Invalid date format: " + e.getMessage());
+            
 }
     }//GEN-LAST:event_createEventMouseClicked
 
+    public void setNombre(String valor)
+    {
+        nombre = valor;
+    }
+    private String getNombre()
+    {
+        return nombre;
+    }
 
-
+   public String nombre;
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bgapp_2;
     private javax.swing.JComboBox<String> category;
