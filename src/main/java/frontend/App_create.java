@@ -195,8 +195,10 @@ public class App_create extends javax.swing.JFrame {
     private void volverappMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverappMouseClicked
        this.dispose();
        App app = new App();
+       app.setNombre(nombre);
        app.setVisible(true);
        app.setLocationRelativeTo(null);
+       
     }//GEN-LAST:event_volverappMouseClicked
 
     private void createEventMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createEventMouseClicked
@@ -256,6 +258,8 @@ public class App_create extends javax.swing.JFrame {
                 preparedStatement.executeUpdate();
                 
                JOptionPane.showMessageDialog(null, "Evento creado con exito");
+               preparedStatement.close();
+               resultSet.close();
                 connection.close();
                 }
         } catch(SQLException e){

@@ -206,8 +206,8 @@ public class Login extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null, "Nombre o contraseña incorrectas. Ingrese nuevamente.");
             }
-            
-            
+            resultSet.close();
+            connection.close();
         } catch(SQLException e){
             
         }catch (ClassNotFoundException ex) {

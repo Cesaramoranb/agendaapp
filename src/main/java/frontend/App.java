@@ -7,6 +7,7 @@ package frontend;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -36,7 +37,6 @@ public class App extends javax.swing.JFrame {
         logout = new javax.swing.JButton();
         crear = new javax.swing.JButton();
         eventos = new javax.swing.JButton();
-        edit = new javax.swing.JButton();
         bgapp_1 = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
@@ -88,7 +88,7 @@ public class App extends javax.swing.JFrame {
                 crearMouseExited(evt);
             }
         });
-        jPanel1.add(crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 360, 100));
+        jPanel1.add(crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 360, 100));
 
         eventos.setBackground(new java.awt.Color(51, 51, 51));
         eventos.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
@@ -109,25 +109,7 @@ public class App extends javax.swing.JFrame {
                 eventosMouseExited(evt);
             }
         });
-        jPanel1.add(eventos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 360, 100));
-
-        edit.setBackground(new java.awt.Color(51, 51, 51));
-        edit.setFont(new java.awt.Font("Impact", 0, 12)); // NOI18N
-        edit.setForeground(new java.awt.Color(255, 255, 255));
-        edit.setText("EDITAR O ELIMINAR EVENTOS");
-        edit.setBorder(null);
-        edit.setBorderPainted(false);
-        edit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        edit.setFocusPainted(false);
-        edit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                editMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                editMouseExited(evt);
-            }
-        });
-        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 360, 100));
+        jPanel1.add(eventos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 360, 100));
 
         bgapp_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bgapp1.jpg"))); // NOI18N
         jPanel1.add(bgapp_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 410));
@@ -177,14 +159,6 @@ public class App extends javax.swing.JFrame {
         eventos.setBackground(new java.awt.Color(51,51,51));
     }//GEN-LAST:event_eventosMouseExited
 
-    private void editMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseEntered
-        edit.setBackground(new java.awt.Color(138, 136, 136));
-    }//GEN-LAST:event_editMouseEntered
-
-    private void editMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editMouseExited
-        edit.setBackground(new java.awt.Color(51,51,51));
-    }//GEN-LAST:event_editMouseExited
-
     private void crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMouseClicked
         this.dispose();
         App_create cr = new App_create();
@@ -194,17 +168,14 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_crearMouseClicked
 
     private void eventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventosMouseClicked
-        this.dispose();
-        App_view vw;
-     
-            vw = new App_view(nombre);
-
-             vw.setVisible(true);
-             vw.setLocationRelativeTo(null);
-             
-
-
+       
+        SwingUtilities.invokeLater(() ->{
+        App_view vw = new App_view(nombre);    
+        vw.setVisible(true);
+        vw.setLocationRelativeTo(null); 
+        });
         
+ 
     }//GEN-LAST:event_eventosMouseClicked
 
     
@@ -218,7 +189,6 @@ public class App extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bgapp_1;
     private javax.swing.JButton crear;
-    private javax.swing.JButton edit;
     private javax.swing.JButton eventos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
